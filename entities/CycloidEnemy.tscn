@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://hits.png" type="Texture" id=1]
+[ext_resource path="res://assets/enemies/cycloid_1.png" type="Texture" id=1]
 [ext_resource path="res://entities/CycloidEnemy.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -12,14 +12,17 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
+radius = 27.7647
+height = 12.7845
 
 [node name="CycloidEnermy" type="RigidBody2D"]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 3.65944, -3.20187 )
-scale = Vector2( 0.0255755, 0.0308895 )
+position = Vector2( 31.1263, -24.9746 )
+scale = Vector2( 0.115362, 0.137817 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.5892, 5.2973 )
 shape = SubResource( 2 )

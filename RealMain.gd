@@ -4,6 +4,7 @@ var score
 
 func _ready():
 	new_game()
+	$Enemies.main = $Main
 
 
 func new_game():

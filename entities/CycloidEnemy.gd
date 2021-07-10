@@ -5,7 +5,6 @@ extends BaseEnemy
 # var a = 2
 # var b = "text"
 var speed
-var direction = Vector2(1, 0)
 var force = Vector2(0, 0)
 
 
@@ -16,7 +15,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	force = direction.rotated(0.5*PI).normalized() * delta * speed * (cos(life)+1) * 0.02
+	force = direction.rotated(0.5*PI).normalized() * delta * speed * (cos(life)+1) * (cos(life)+1) * (cos(life)+1) * (cos(life)+1) * 0.02
 	direction += force
 	position += direction.normalized() * speed * delta
 	

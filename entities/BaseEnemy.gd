@@ -1,11 +1,13 @@
 extends RigidBody2D
 class_name BaseEnemy
 var visiualer
+var direction = Vector2(1, 0)
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 var life = 0
+var target: Area2D
 
 func _enter_tree():
 	visiualer = VisibilityNotifier2D.new()
