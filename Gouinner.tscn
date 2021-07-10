@@ -5,20 +5,20 @@
 [ext_resource path="res://assets/gouinner/gouinner_circle_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/gouinner/gouinner_circle_2.png" type="Texture" id=4]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 16.8069
 height = 27.7213
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "stright",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "circle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "stright",
 "speed": 5.0
 } ]
 
@@ -29,12 +29,11 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 25 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.03573, 7.38678 )
 scale = Vector2( -0.04, 0.04 )
 frames = SubResource( 2 )
 animation = "circle"
-frame = 1
 playing = true
