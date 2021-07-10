@@ -1,6 +1,6 @@
 extends Area2D
 
-const speed = 400
+const speed = 600
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -30,6 +30,7 @@ func calculate_direction(p: Vector2, delta):
 	if _sin < 0:
 		side = -1
 	direction += (delta_d * speed * (-_cos) * delta)
+	direction = direction.normalized()
 	var _direction_sin = Vector2(1, 0).cross(direction)
 	var _direction_cos = Vector2(1, 0).dot(direction)
 #	print(asin(_sin))
