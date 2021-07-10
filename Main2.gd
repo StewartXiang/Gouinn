@@ -26,10 +26,7 @@ func get_input():
 	if Input.is_action_just_pressed("ui_up"):
 		var one=carriage.instance()
 		add_child(one)
-		var last=train
-		while last.tail_node:
-			last=last.tail_node
-		one.setup(last)
+		one.setup( Carriage.get_last(train) )
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -103,3 +100,11 @@ func take_charge():
 
 func end_charge():
 	charged=false
+
+func damage():
+	var last=Carriage.get_last(train)
+	last.dropout()
+
+func _on_body_entered(body):
+	if body is BaseEnemy:
+		damage()
