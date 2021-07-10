@@ -25,9 +25,7 @@ func get_input():
 		status=1-status
 		change_status(status)
 	if Input.is_action_just_pressed("ui_up"):
-		var one=carriage.instance()
-		add_child(one)
-		one.setup( Carriage.get_last(train) )
+		add_carriage()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

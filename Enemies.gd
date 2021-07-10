@@ -36,10 +36,23 @@ var enemies_pool = [
 	PRELOADS[0],
 ]
 var main: Node2D
+var main_protect_zone:Rect2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	main=get_node("../Main")
+	var g=main.gouinner
+	var t=main.train
+	var box=g.position-t.position
+	main_protect_zone=Rect2(
+		min(g.position.x,t.position.x),
+		min(g.position.y,t.position.y),
+		abs(box.x),
+		abs(box.y)
+	)
+	main_protect_zone.grow(50)
+	update()
 	var _n = randi()%10 + 3
 	for i in _n:
 		var _b = BASE_ENEMY.instance()
@@ -48,11 +61,16 @@ func _ready():
 			randi()%1900 + 10, 
 			randi()%1060 + 10
 		)
+		while main_protect_zone.has_point(_b.position):
+			_b.position = Vector2(
+				randi()%1900 + 10, 
+				randi()%1060 + 10
+			)
 	_start_enemies()
 	pass # Replace with function body.
 
 func _start_enemies():
-	$Timer.start(3)
+	$Timer.start(1)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -89,5 +107,8 @@ func spawn_enemy():
 #			_e.target = main.get_node("Train")
 		_e.target = main.get_node("Train")
 	
-	
-	
+
+func _draw():
+	if main_protect_zone:
+		draw_rect(main_protect_zone,Color.red,false)
+
