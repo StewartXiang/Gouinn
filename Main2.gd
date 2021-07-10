@@ -48,7 +48,7 @@ func _physics_process(delta):
 	match status:
 		Status.ManRotate:
 			var man_to_train=rad2deg((-rvec).angle_to(train_vec))
-			print(man_to_train)
+#			print(man_to_train)
 			if ((man_to_train<=man_range.x and clockwise==1) or 
 			(man_to_train>=man_range.y and clockwise==-1)):
 				clockwise*=-1
