@@ -2,7 +2,7 @@ extends Area2D
 enum Status{FLY, STAND}
 
 signal on_change_status(s)
-const speed = 600
+const speed = 200
 const f = 800
 # Declare member variables here. Examples:
 # var a = 2

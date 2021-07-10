@@ -1,6 +1,6 @@
 extends Area2D
 
-const speed = 600
+const speed = 200
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
