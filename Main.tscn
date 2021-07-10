@@ -8,5 +8,7 @@
 script = ExtResource( 2 )
 
 [node name="Gouinner" parent="." instance=ExtResource( 1 )]
+position = Vector2( 501.845, 418.707 )
 
 [node name="Train" parent="." instance=ExtResource( 3 )]
+position = Vector2( 700.247, 648.772 )
