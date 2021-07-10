@@ -59,10 +59,12 @@ func _physics_process(delta):
 func setup(h:Carriage):
 	head_node=h
 	h.tail_node=self
+	connect("body_entered",get_parent(),"_on_body_entered")
 
 func dropout():
 	head_node.tail_node=null
 	head_node=null
+	disconnect("body_entered",get_parent(),"_on_body_entered")
 
 func get_head_pos()-> Vector2:
 	return shape.global_position+body_vec.rotated(rotation)
@@ -79,10 +81,16 @@ func get_tail_pos()-> Vector2:
 #	current_step=-1.0
 #	src_pos=Vector2.ZERO
 #	tar_vec=Vector2.ZERO
-
 #func _draw():
 #
 ##	draw_circle(Vector2.ZERO,10,Color.red)
 #	draw_circle(body_vec.rotated(rotation),10,Color.red)
 #	draw_circle((-body_vec).rotated(rotation),30,Color.blue)
 #	draw_line(Vector2.ZERO,body_vec,Color.aqua)
+
+static func get_last(c:Carriage)-> Carriage:
+	var last:Carriage=c
+	while last.tail_node:
+		last=last.tail_node
+	return last
+		

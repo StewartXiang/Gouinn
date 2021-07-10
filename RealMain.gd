@@ -3,6 +3,7 @@ extends Node2D
 var score
 
 func _ready():
+	randomize()
 	new_game()
 	$Enemies.main = $Main
 

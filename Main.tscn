@@ -12,3 +12,6 @@ position = Vector2( 211.888, 347.051 )
 
 [node name="Gouinner" parent="." instance=ExtResource( 1 )]
 position = Vector2( 123.472, 217.966 )
+
+[connection signal="body_entered" from="Train" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Gouinner" to="." method="_on_body_entered"]

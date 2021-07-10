@@ -2,6 +2,7 @@ extends Area2D
 
 
 signal hit
+signal rail_entered
 
 onready var tween = $Tween
 onready var collision = $CollisionShape2D
@@ -70,6 +71,7 @@ func _on_Player_body_entered(body):
 		tween.start()
 	
 	emit_signal("hit")
+	emit_signal("rail_entered")
 
 
 	
