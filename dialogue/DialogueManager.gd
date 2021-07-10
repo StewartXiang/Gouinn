@@ -39,12 +39,12 @@ func first_get_carriage():
 	yield(get_tree().create_timer(5),"timeout")
 	dialogue.dialog_pop_off()
 
-func persist_100_seconds():
-	# 坚持了 100s（彩蛋）
+func persist_20_seconds():
+	# 坚持了 20s（彩蛋）
 	dialogue.dialog_pop_up()
-	dialogue.change_text("不知道你有没有听说过一款叫做《是男人就坚持100秒》的游戏。", 5)
+	dialogue.change_text("不知道你有没有听说过一款叫做《是男人就撑过20秒》的游戏。", 5)
 	yield(get_tree().create_timer(5),"timeout")
-	dialogue.change_text("但其实坚持 100 秒之后，什么都不会发生。", 5)
+	dialogue.change_text("但其实坚持 20 秒之后，什么都不会发生。", 5)
 	yield(get_tree().create_timer(5),"timeout")
 	dialogue.dialog_pop_off()
 
