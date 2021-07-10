@@ -6,7 +6,7 @@ var w=180
 var v=deg2rad(w)*r/2.0
 onready var gouinner = $Gouinner
 onready var train = $Train
-var status = Status.TrainRotate
+var status = Status.ManRotate
 var current_deg=0.0
 var src=Vector2.ZERO
 var tar=Vector2.ONE
@@ -15,6 +15,7 @@ var clockwise=-1
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var carriage=preload("res://Carriage.tscn")
 
 func get_input():
 	if Input.is_action_just_pressed("space"):
@@ -33,11 +34,19 @@ func get_input():
 				clockwise=sign(rvec.dot(-train.transform.y) )
 				train.get_node("AnimatedSprite").animation = "circle"
 				gouinner.get_node("AnimatedSprite").animation = "circle"
+	if Input.is_action_just_pressed("ui_up"):
+		var one=carriage.instance()
+		add_child(one)
+		var last=train
+		while last.tail_node:
+			last=last.tail_node
+		one.setup(last)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	src=gouinner.position
+#	src=gouinner.position
+	src = train.position
 	var rvec=train.position-gouinner.position
 	clockwise=sign(rvec.dot(-train.transform.y) )
 	
@@ -59,10 +68,14 @@ func _physics_process(delta):
 				clockwise*=-1
 				current_deg+=w*delta*clockwise
 			gouinner.position=tar
-			position+=train_vec*v*delta
+			var group_move=train_vec*v*delta
+			src+=group_move
+			train.position+=group_move
+			gouinner.rotation=deg2rad(current_deg+180)
 		Status.TrainRotate:
 			train.position=tar
 			train.rotation=(-tvec).angle()
+			gouinner.rotation=deg2rad(current_deg)
 	update()
 
 func _draw():

@@ -9,8 +9,6 @@ script = ExtResource( 2 )
 
 [node name="Train" parent="." instance=ExtResource( 3 )]
 position = Vector2( 211.888, 347.051 )
-script = null
 
 [node name="Gouinner" parent="." instance=ExtResource( 1 )]
 position = Vector2( 123.472, 217.966 )
-script = null
