@@ -14,7 +14,7 @@ func death_once():
 	dialogue.dialog_pop_up()
 	dialogue.change_text("哈哈，每个人都会经历这个过程的", 5)
 	yield(get_tree().create_timer(5),"timeout")
-	dialogue.change_text("再挑战一次吧，JK 键可以帮助你调整绳子的半径。", 5)
+	dialogue.change_text("再挑战一次吧，空格键可以让你移动。", 5)
 	yield(get_tree().create_timer(5),"timeout")
 	dialogue.dialog_pop_off()
 
@@ -122,7 +122,7 @@ func _ready():
 	yield(get_tree().create_timer(5),"timeout")
 	first_get_carriage()
 	yield(get_tree().create_timer(5),"timeout")
-	persist_100_seconds()
+	persist_20_seconds()
 	yield(get_tree().create_timer(5),"timeout")
 	first_show_rail()
 	yield(get_tree().create_timer(5),"timeout")
