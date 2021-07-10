@@ -6,18 +6,17 @@ extends BaseEnemy
 # var b = "text"
 
 var speed=20
-var direction=Vector2(0,0)
 var speed_range=Vector2(64,320)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed=rand_range(speed_range.x,speed_range.y)
-	direction=Vector2(randf(),randf()).normalized()
+#	direction=Vector2(randf(),randf()).normalized()
 	look_at(direction)
-	direction*=speed
+	direction = direction.normalized()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 func _physics_process(delta):
-	position+=direction*delta
+	position+=direction*delta*speed

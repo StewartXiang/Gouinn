@@ -4,7 +4,6 @@ const MAX_SPEED = 500
 
 # Declare member variables here. Examples:
 # var a = 2
-var user: Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,9 +19,9 @@ func _process(delta):
 #	pass
 
 
-func _on_Dash():
-	if user:
-		linear_velocity = (user.position - position).normalized() * MAX_SPEED
+func _on_dash():
+	if target:
+		linear_velocity = (target.get_global_transform().get_origin() - position).normalized() * MAX_SPEED
 	else:
 		linear_velocity = (Vector2(500, 500) - position).normalized() * MAX_SPEED
 		
@@ -38,4 +37,7 @@ func look_follow(state, target_position: Vector2):
 	set_angular_velocity(get_angle_to(target_position) / state.get_step())
 	
 func _integrate_forces(state):
-	look_follow(state, Vector2(0, 600))
+	if target:
+		look_follow(state, target.get_global_transform().get_origin())
+	else:
+		look_follow(state, Vector2(0, 600))
