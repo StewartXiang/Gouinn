@@ -13,7 +13,7 @@ func _ready():
 	
 	pass # Replace with function body.
 
-func _process(delta):
+func _physics_process(delta):
 	match status:
 		Status.STRAIGHT:
 			gouinner.calculate_direction(train.position, train.direction, delta)

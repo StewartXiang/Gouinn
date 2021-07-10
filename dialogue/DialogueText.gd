@@ -36,12 +36,12 @@ func _process(delta):
 			on_show=false
 			current_time=0.0
 			self.emit_signal("on_show_end")
-		text_label.percent_visible=p
+#		text_label.percent_visible=p
 		
 
 func change_text(s: String,t:float=SHOWTIME):
 	text_label.text=s
-	text_label.percent_visible=0.0
+#	text_label.percent_visible=0.0
 	show_time=t
 	current_time=0.0
 	on_show=true
