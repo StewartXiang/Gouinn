@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/theme.bmp-50b489f6f373bae8411095fd71074b59.stex"
+path="res://.import/theme.bmp-59a70c9bf9b409a87d4383d15af0a8e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SetWallpaper/theme.bmp"
-dest_files=[ "res://.import/theme.bmp-50b489f6f373bae8411095fd71074b59.stex" ]
+source_file="res://set_wallpaper/theme.bmp"
+dest_files=[ "res://.import/theme.bmp-59a70c9bf9b409a87d4383d15af0a8e6.stex" ]
 
 [params]
 
