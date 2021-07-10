@@ -8,7 +8,9 @@
 script = ExtResource( 2 )
 
 [node name="Gouinner" parent="." instance=ExtResource( 1 )]
-position = Vector2( 501.845, 418.707 )
+position = Vector2( 560.838, 220.123 )
 
 [node name="Train" parent="." instance=ExtResource( 3 )]
-position = Vector2( 700.247, 648.772 )
+position = Vector2( 759.24, 450.188 )
+
+[connection signal="on_change_status" from="Gouinner" to="." method="change_status"]
