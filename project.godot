@@ -14,10 +14,9 @@ config/name="Gouinn"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
-[display]
+[autoload]
 
-window/size/width=1920
-window/size/height=1080
+WebSocket="*res://SetWallpaper/SetWallpaper.tscn"
 
 [physics]
 
