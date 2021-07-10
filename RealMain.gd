@@ -15,9 +15,11 @@ func new_game():
 	$ScoreTimer.start()
 
 
+
 func game_over():
 	$ScoreTimer.stop()
 	save_best_score()
+	$HUD.show_game_over(score)
 	
 
 func _on_ScoreTimer_timeout():
