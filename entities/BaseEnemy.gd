@@ -18,6 +18,7 @@ func _ready():
 	$VisibilityNotifier2D.connect("screen_exited", self, "_on_VisibilityNotifier2D_screen_exited")
 	collision_mask = 0b0
 	gravity_scale = 0
+	$Coll
 	pass
 
 func _physics_process(delta):
@@ -25,7 +26,11 @@ func _physics_process(delta):
 	pass
 	
 func _on_VisibilityNotifier2D_screen_exited():
-	print("s.fdsf")
+	queue_free()
+
+func _on_hit(body):
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

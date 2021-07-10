@@ -80,9 +80,9 @@ func get_tail_pos()-> Vector2:
 #	src_pos=Vector2.ZERO
 #	tar_vec=Vector2.ZERO
 
-func _draw():
-	
-#	draw_circle(Vector2.ZERO,10,Color.red)
-	draw_circle(body_vec.rotated(rotation),10,Color.red)
-	draw_circle((-body_vec).rotated(rotation),30,Color.blue)
-	draw_line(Vector2.ZERO,body_vec,Color.aqua)
+#func _draw():
+#
+##	draw_circle(Vector2.ZERO,10,Color.red)
+#	draw_circle(body_vec.rotated(rotation),10,Color.red)
+#	draw_circle((-body_vec).rotated(rotation),30,Color.blue)
+#	draw_line(Vector2.ZERO,body_vec,Color.aqua)
