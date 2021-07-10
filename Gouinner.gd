@@ -28,7 +28,7 @@ func get_input():
 		emit_signal("on_change_status", status)
 		
 
-func _process(delta):
+func _physics_process(delta):
 	position += direction.normalized() * speed * delta
 	position += vibration.normalized() * f * delta
 	get_input()
