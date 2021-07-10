@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
+"base": "RigidBody2D",
 "class": "BaseEnemy",
 "language": "GDScript",
 "path": "res://entities/BaseEnemy.gd"
@@ -27,12 +27,6 @@ config/icon="res://icon.png"
 [autoload]
 
 WebSocket="*res://SetWallpaper/SetWallpaper.tscn"
-
-[display]
-
-window/size/width=1920
-window/size/height=1080
-window/dpi/allow_hidpi=true
 
 [input]
 

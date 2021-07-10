@@ -11,6 +11,6 @@ script = ExtResource( 2 )
 position = Vector2( 147.037, 268.177 )
 
 [node name="Train" parent="." instance=ExtResource( 3 )]
-position = Vector2( 209.368, 349.571 )
+position = Vector2( 211.888, 347.051 )
 
 [connection signal="on_change_status" from="Gouinner" to="." method="change_status"]
