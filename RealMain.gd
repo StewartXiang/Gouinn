@@ -5,6 +5,7 @@ var score
 func _ready():
 	randomize()
 	new_game()
+	
 	$Enemies.main = $Main
 
 
@@ -37,3 +38,8 @@ func save_best_score():
 		file.store_string(str(score))
 		file.close()
 
+
+
+func gameover():
+	game_over()
+	pass # Replace with function body.

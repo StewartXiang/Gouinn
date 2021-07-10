@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gouinn"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://RealMain.tscn"
 config/icon="res://ui_widgets/icon.png"
 
 [autoload]

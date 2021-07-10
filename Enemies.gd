@@ -39,6 +39,7 @@ var main: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	var _n = randi()%10 + 3
 	for i in _n:
 		var _b = BASE_ENEMY.instance()
