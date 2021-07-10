@@ -1,6 +1,19 @@
 extends Node2D
 
+
 const BASE_ENEMY = preload("res://entities/BaseEnemy.tscn")
+
+const EnermyKinds = [
+	"CycloidEnemy", "CycloidEnemy", "CycloidEnemy", 
+	"DashEnemy", "DashEnemy", "DashEnemy", 
+	"BossEnemy",
+	
+]
+
+const CYCLOID_ENERMY = preload("res://entities/CycloidEnemy.tscn")
+const DASH_ENERMY = preload("res://entities/DashEnemy.tscn")
+const BOSS_ENERMY = preload("res://entities/BossEnemy.tscn")
+
 const PRELOADS = [
 	preload("res://entities/CycloidEnemy.tscn"), 
 	preload("res://entities/DashEnemy.tscn"), 
@@ -9,6 +22,14 @@ const PRELOADS = [
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var enemy_level = [
+	[PRELOADS[1]],
+	[PRELOADS[1],PRELOADS[0],PRELOADS[0]],
+	[PRELOADS[1],PRELOADS[0]],
+	[PRELOADS[2]]
+]
+var diff_level=[0.1,0.3,0.5,0.65]
+
 var difficulty:float=0.1
 var enemy_num = 0
 var enemies_pool = [
@@ -37,16 +58,22 @@ func _start_enemies():
 
 
 func _on_Timer_timeout():
-	for i in randi()%int(10*difficulty):
+	for i in randi()%int(ceil(5*difficulty)):
 		spawn_enemy()
 #	spawn_enemy()
-	if enemy_num < PRELOADS.size()*4:
-		enemies_pool.append(PRELOADS[min(randi()%int(enemy_num + 1), PRELOADS.size()-1)])
-	difficulty += 0.1
+#	if enemy_num < PRELOADS.size()*4:
+#		enemies_pool.append(PRELOADS[min(randi()%int(enemy_num + 1), PRELOADS.size()-1)])
+#	difficulty += 0.5
+	var level=diff_level.find(difficulty)
+	if level>0:
+		enemies_pool+=enemy_level[level%enemy_level.size()]
+		print(enemies_pool)
+		
+	difficulty += 0.05
 	pass # Replace with function body.
 
 func spawn_enemy():
-	print(enemy_num)
+#	print(enemy_num)
 	enemy_num += 1
 	$Path2D/PathFollow2D.offset = randi()
 	var _e = enemies_pool[randi()%enemies_pool.size()].instance()
