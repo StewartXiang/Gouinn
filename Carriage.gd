@@ -18,6 +18,7 @@ var tar_vec=Vector2.ZERO
 #var current_step=-1.0
 
 onready var shape=$CollisionShape2D
+signal gameover
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,9 +63,12 @@ func setup(h:Carriage):
 	connect("body_entered",get_parent(),"_on_body_entered")
 
 func dropout():
-	head_node.tail_node=null
-	head_node=null
-	disconnect("body_entered",get_parent(),"_on_body_entered")
+	if head_node == null:
+		emit_signal("gameover")
+	else:
+		head_node.tail_node=null
+		head_node=null
+		disconnect("body_entered",get_parent(),"_on_body_entered")
 
 func get_head_pos()-> Vector2:
 	return shape.global_position+body_vec.rotated(rotation)

@@ -18,6 +18,7 @@ var charged=false
 # var a = 2
 # var b = "text"
 var carriage=preload("res://Carriage.tscn")
+signal gameover
 
 func get_input():
 	if Input.is_action_just_pressed("space") and not charged:
@@ -108,3 +109,8 @@ func damage():
 func _on_body_entered(body):
 	if body is BaseEnemy:
 		damage()
+
+
+func _on_Train_gameover():
+	emit_signal("gameover")
+	pass # Replace with function body.
