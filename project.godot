@@ -13,6 +13,10 @@ config_version=4
 config/name="Gouinn"
 config/icon="res://icon.png"
 
+[autoload]
+
+WebSocket="*res://SetWallpaper/SetWallpaper.tscn"
+
 [physics]
 
 common/enable_pause_aware_picking=true
