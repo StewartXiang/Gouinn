@@ -8,7 +8,7 @@ func _ready():
 func on_pressed(name):
 	match name:
 		"NewButton":
-			print("新游戏")
+			get_tree().change_scene("res://RealMain.tscn")
 		"ScoreButton":
 			print("分数榜")
 		"QuitButton":
