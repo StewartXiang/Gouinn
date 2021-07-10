@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://RealMain.gd" type="Script" id=1]
 [ext_resource path="res://ui_widgets/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dialogue/方正黑体简体.TTF" type="DynamicFontData" id=3]
 [ext_resource path="res://Pause.gd" type="Script" id=4]
-[ext_resource path="res://Main.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
@@ -79,10 +77,6 @@ text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Main" parent="." instance=ExtResource( 5 )]
-
-[node name="Enemies" parent="." instance=ExtResource( 6 )]
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="pressed" from="PauseMenu/Pause/ResumeButton" to="PauseMenu/Pause" method="_on_ResumeButton_pressed"]
