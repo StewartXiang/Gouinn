@@ -24,14 +24,19 @@ func get_input():
 				src=train.position
 				current_deg=rad2deg( (gouinner.position-train.position).angle() )
 				v=deg2rad(w)*r/2.0
+				train.get_node("AnimatedSprite").animation = "stright"
+				gouinner.get_node("AnimatedSprite").animation = "stright"
 			Status.TrainRotate:
 				src=gouinner.position
 				current_deg=rad2deg( (train.position-gouinner.position).angle() )
 				var rvec=train.position-gouinner.position
 				clockwise=sign(rvec.dot(-train.transform.y) )
+				train.get_node("AnimatedSprite").animation = "circle"
+				gouinner.get_node("AnimatedSprite").animation = "circle"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	src=gouinner.position
 	var rvec=train.position-gouinner.position
 	clockwise=sign(rvec.dot(-train.transform.y) )
