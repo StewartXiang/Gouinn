@@ -95,6 +95,12 @@ func change_status(s):
 func deg2vec(deg:float) -> Vector2:
 	return Vector2.RIGHT.rotated(deg2rad(deg))
 
+func add_carriage():
+	var one=carriage.instance()
+	add_child(one)
+	one.setup( Carriage.get_last(train) )
+	return one
+
 func take_charge():
 	charged=true
 	change_status(Status.ManRotate)
@@ -103,8 +109,11 @@ func end_charge():
 	charged=false
 
 func damage():
-	var last=Carriage.get_last(train)
-	last.dropout()
+	if train.tail_node:
+		var last=Carriage.get_last(train)
+		last.dropout()
+	else:
+		print("炸了炸了")
 
 func _on_body_entered(body):
 	if body is BaseEnemy:
