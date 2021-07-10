@@ -17,14 +17,14 @@ onready var ani:=$BG/AnimationPlayer
 signal on_show_end
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	yield(get_tree().create_timer(3.5),"timeout")
-	dialog_pop_up()
-	change_text("啊啊啊啊")
-	yield(get_tree().create_timer(2*SHOWTIME),"timeout")
-	change_text("哦哦哦哦哦哦哦哦哦哦哦哦哦")
-	yield(get_tree().create_timer(2.1),"timeout")
-	dialog_pop_off()
+#func _ready():
+#	yield(get_tree().create_timer(3.5),"timeout")
+#	dialog_pop_up()
+#	change_text("啊啊啊啊")
+#	yield(get_tree().create_timer(2*SHOWTIME),"timeout")
+#	change_text("哦哦哦哦哦哦哦哦哦哦哦哦哦")
+#	yield(get_tree().create_timer(2.1),"timeout")
+#	dialog_pop_off()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
