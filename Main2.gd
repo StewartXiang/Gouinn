@@ -64,23 +64,22 @@ func _physics_process(delta):
 				train.position+=group_move
 			else:
 				src=train.position
-				print("c++++++")
 			gouinner.rotation=deg2rad(current_deg+180)
 		Status.TrainRotate:
 			train.position=tar
 			train.rotation=(-tvec).angle()
 			gouinner.rotation=deg2rad(current_deg)
-	update()
+#	update()
 
-func _draw():
-	var rvec=r*deg2vec(current_deg)
-	var tvec=rvec.tangent() * clockwise
-	var train_vec=train.transform.x
-	draw_line(src,src+rvec,Color.red)
-	draw_line(src+rvec,src+rvec+tvec,Color.blue)
-	draw_line(train.position,train.position+train_vec*10,Color.aqua)
-	draw_line(train.position,train.position+train.transform.y*100,Color.aqua)
-	
+#func _draw():
+#	var rvec=r*deg2vec(current_deg)
+#	var tvec=rvec.tangent() * clockwise
+#	var train_vec=train.transform.x
+#	draw_line(src,src+rvec,Color.red)
+#	draw_line(src+rvec,src+rvec+tvec,Color.blue)
+#	draw_line(train.position,train.position+train_vec*10,Color.aqua)
+#	draw_line(train.position,train.position+train.transform.y*100,Color.aqua)
+#
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
