@@ -1,5 +1,6 @@
 extends Node2D
 enum Status{ManRotate=0, TrainRotate=1}
+const CARRIAGE = preload("res://entities/CarriageItem.tscn")
 
 var r=200
 var w=180
@@ -61,6 +62,9 @@ func _physics_process(delta):
 				var group_move=train_vec*v*delta
 				src+=group_move
 				train.position+=group_move
+			else:
+				src=train.position
+				print("c++++++")
 			gouinner.rotation=deg2rad(current_deg+180)
 		Status.TrainRotate:
 			train.position=tar
@@ -68,19 +72,22 @@ func _physics_process(delta):
 			gouinner.rotation=deg2rad(current_deg)
 	update()
 
-#func _draw():
-#	var rvec=r*deg2vec(current_deg)
-#	var tvec=rvec.tangent() * clockwise
-#	var train_vec=train.transform.x
-#	draw_line(src,src+rvec,Color.red)
-#	draw_line(src+rvec,src+rvec+tvec,Color.blue)
-#	draw_line(train.position,train.position+train_vec*10,Color.aqua)
-	#draw_line(train.position,train.position+train.transform.y*100,Color.aqua)
+func _draw():
+	var rvec=r*deg2vec(current_deg)
+	var tvec=rvec.tangent() * clockwise
+	var train_vec=train.transform.x
+	draw_line(src,src+rvec,Color.red)
+	draw_line(src+rvec,src+rvec+tvec,Color.blue)
+	draw_line(train.position,train.position+train_vec*10,Color.aqua)
+	draw_line(train.position,train.position+train.transform.y*100,Color.aqua)
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 func change_status(s):
+	status=s
 	match s:
 		Status.ManRotate:
 			src=train.position
@@ -127,6 +134,12 @@ func _on_body_entered(body):
 #	print(self.name)
 	if body is BaseItem:
 		(body as BaseItem)._on_pickup(self)
+		var _a = CARRIAGE.instance()
+		add_child(_a)
+		_a.position = Vector2(
+			randi()%1800+60, 
+			randi()%960+60
+		)
 	if body is BaseEnemy:
 		damage()
 		body._destroy()
