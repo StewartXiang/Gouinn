@@ -12,17 +12,18 @@ var on_rail = false
 
 
 var path_follow
-	
+onready var main=get_parent()
 	
 func _process(delta):
 	if on_rail: #在铁轨上走
 		
-		self.position = path_follow.position
-		self.rotation_degrees = path_follow.rotation_degrees
+		position = path_follow.position
+		rotation_degrees = path_follow.rotation_degrees
 		
 		if path_follow.unit_offset >= 1:
 			on_rail = false
-			emit_signal("rail_exited")
+			main.end_charge()
+#			emit_signal("rail_exited")
 			path_follow.get_parent().queue_free()
 
 
@@ -35,7 +36,8 @@ func _on_Train_body_entered(body):
 		tween.interpolate_property(path_follow, "unit_offset", 0, 1, 5)
 		path_follow.get_parent().get_node("PathFollow2DEnd").queue_free()
 		on_rail = true
-		emit_signal("rail_entered")
+		main.take_charge()
+#		emit_signal("rail_entered")
 		
 		if not tween.is_active():
 			tween.start()
@@ -44,7 +46,8 @@ func _on_Train_body_entered(body):
 		tween.interpolate_property(path_follow, "unit_offset", 1, 0, 5)
 		path_follow.get_parent().get_node("PathFollow2DHead").queue_free()
 		on_rail = true
-		emit_signal("rail_entered")
+#		emit_signal("rail_entered")
+		main.take_charge()
 		if not tween.is_active():
 			tween.start()
 	
