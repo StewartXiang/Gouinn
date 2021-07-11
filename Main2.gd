@@ -1,5 +1,6 @@
 extends Node2D
 enum Status{ManRotate=0, TrainRotate=1}
+const CARRIAGE = preload("res://entities/CarriageItem.tscn")
 
 var r=200
 var w=180
@@ -133,6 +134,12 @@ func _on_body_entered(body):
 #	print(self.name)
 	if body is BaseItem:
 		(body as BaseItem)._on_pickup(self)
+		var _a = CARRIAGE.instance()
+		add_child(_a)
+		_a.position = Vector2(
+			randi()%1800+60, 
+			randi()%960+60
+		)
 	if body is BaseEnemy:
 		damage()
 		body._destroy()
