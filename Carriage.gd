@@ -31,8 +31,8 @@ func _ready():
 
 func _physics_process(delta):
 	if head_node:
-		var tail_pos=(head_node as Carriage).get_tail_pos()
 		var head_pos=get_head_pos()
+		var tail_pos=head_node.get_tail_pos() if head_node else head_pos
 #		position=tail_pos-(body_vec).rotated(rotation)
 		var angle=(-transform.x).angle_to(head_node.transform.x)
 		var max_angle=deg2rad(MaxAngle)
@@ -68,12 +68,12 @@ func dropout():
 		emit_signal("gameover")
 	else:
 		$AnimationPlayer.play("blink")
-		yield(get_tree().create_timer(0.3),"timeout")
 		if head_node:
 			head_node.tail_node=null
 			head_node=null
 		disconnect("body_entered",get_parent(),"_on_body_entered")
-		queue_free()
+		yield(get_tree().create_timer(0.3),"timeout")
+		call_deferred("queue_free")
 
 func get_head_pos()-> Vector2:
 	return shape.global_position+body_vec.rotated(rotation)
