@@ -20,10 +20,10 @@ func _process(delta):
 		position = path_follow.position
 		rotation_degrees = path_follow.rotation_degrees
 		
-		if path_follow.unit_offset >= 1:
+		if path_follow.unit_offset >= 0.95:
 			on_rail = false
 			main.end_charge()
-#			emit_signal("rail_exited")
+			emit_signal("rail_exited")
 			path_follow.get_parent().queue_free()
 
 
