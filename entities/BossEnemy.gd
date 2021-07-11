@@ -41,3 +41,8 @@ func _integrate_forces(state):
 		look_follow(state, target.get_global_transform().get_origin())
 	else:
 		look_follow(state, Vector2(0, 600))
+
+func _on_hit(body):
+	if body is BaseEnemy:
+			body._destroy()
+		

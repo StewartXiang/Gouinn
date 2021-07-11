@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var dialogue = $Center
+onready var dialogue = $VBox/Center
 
 func first_of_all():
 	# 最开始

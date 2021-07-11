@@ -16,6 +16,8 @@ animations = [ {
 radius = 18.7092
 
 [node name="BaseEnemy" type="RigidBody2D"]
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

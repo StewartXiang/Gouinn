@@ -25,6 +25,10 @@ func get_input():
 	if Input.is_action_just_pressed("space") and not charged:
 		status=1-status
 		change_status(status)
+#	if Input.is_action_pressed("space") and not charged:
+#		status = Status.TrainRotate
+#	elif not charged:
+#		status = Status.ManRotate
 	if Input.is_action_just_pressed("ui_up"):
 		add_carriage(Vector2.ZERO)
 
@@ -124,6 +128,7 @@ func _on_body_entered(body):
 		(body as BaseItem)._on_pickup(self)
 	if body is BaseEnemy:
 		damage()
+		body._destroy()
 
 func _on_Train_gameover():
 	emit_signal("gameover")
