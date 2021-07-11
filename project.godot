@@ -9,10 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "RigidBody2D",
+"base": "Area2D",
 "class": "BaseEnemy",
 "language": "GDScript",
 "path": "res://entities/BaseEnemy.gd"
+}, {
+"base": "RigidBody2D",
+"class": "BaseItem",
+"language": "GDScript",
+"path": "res://entities/BaseItem.gd"
 }, {
 "base": "Area2D",
 "class": "Carriage",
@@ -21,6 +26,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseEnemy": "",
+"BaseItem": "",
 "Carriage": ""
 }
 
