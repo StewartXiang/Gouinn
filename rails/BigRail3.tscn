@@ -32,8 +32,8 @@ scale = Vector2( 1.01617, 1.00312 )
 curve = SubResource( 1 )
 
 [node name="PathFollow2DHead" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 458.961, 115.806 )
-rotation = 1.62628
+position = Vector2( 471.691, 106.595 )
+rotation = -0.871135
 offset = 3.84405
 
 [node name="HeadDetect" type="RigidBody2D" parent="Path2D/PathFollow2DHead"]
@@ -49,7 +49,8 @@ texture = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="PathFollow2DEnd" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 1557.79, 916.358 )
+position = Vector2( 469.629, 109.731 )
+rotation = -0.338561
 offset = 3844.05
 
 [node name="EndDetect" type="RigidBody2D" parent="Path2D/PathFollow2DEnd"]

@@ -13,6 +13,7 @@ func new_game():
 	score = 0
 	$HUD.update_score(score)
 	$ScoreTimer.start()
+	$BGM.play()
 
 
 
@@ -20,6 +21,7 @@ func game_over():
 	$ScoreTimer.stop()
 	save_best_score()
 	$HUD.show_game_over(score)
+	$BGM.stop()
 	
 
 func _on_ScoreTimer_timeout():

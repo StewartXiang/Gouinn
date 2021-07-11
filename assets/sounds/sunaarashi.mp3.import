@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sunaarashi.mp3-698b3ea2b14fa14811444d8d62c48cc0.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sunaarashi.mp3"
+dest_files=[ "res://.import/sunaarashi.mp3-698b3ea2b14fa14811444d8d62c48cc0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

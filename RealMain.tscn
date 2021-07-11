@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://RealMain.gd" type="Script" id=1]
 [ext_resource path="res://ui_widgets/HUD.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Main.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui_widgets/bg.png" type="Texture" id=7]
+[ext_resource path="res://assets/sounds/sunaarashi.mp3" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
@@ -96,6 +97,9 @@ __meta__ = {
 [node name="Main" parent="." instance=ExtResource( 5 )]
 
 [node name="Enemies" parent="." instance=ExtResource( 6 )]
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="pressed" from="PauseMenu/Pause/ResumeButton" to="PauseMenu/Pause" method="_on_ResumeButton_pressed"]

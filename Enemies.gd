@@ -108,7 +108,7 @@ func spawn_enemy():
 		_e.target = main.get_node("Train")
 	
 
-func _draw():
-	if main_protect_zone:
-		draw_rect(main_protect_zone,Color.red,false)
+#func _draw():
+#	if main_protect_zone:
+#		draw_rect(main_protect_zone,Color.red,false)
 
