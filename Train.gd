@@ -9,7 +9,7 @@ onready var collision = $CollisionShape2D
 
 var target = Vector2()
 var on_rail = false
-
+var status = 0
 
 var path_follow
 onready var main=get_parent()
@@ -19,12 +19,18 @@ func _process(delta):
 		
 		position = path_follow.position
 		rotation_degrees = path_follow.rotation_degrees
-		
-		if path_follow.unit_offset >= 0.95:
-			on_rail = false
-			main.end_charge()
-			emit_signal("rail_exited")
-			path_follow.get_parent().queue_free()
+		if status == 0:
+			if path_follow.unit_offset >= 0.95:
+				on_rail = false
+				main.end_charge()
+				emit_signal("rail_exited")
+				path_follow.get_parent().queue_free()
+		if status == 1:
+			if path_follow.unit_offset >= 0.05:
+				on_rail = false
+				main.end_charge()
+				emit_signal("rail_exited")
+				path_follow.get_parent().queue_free()
 			
 	position.x = clamp(position.x, 0, 1920)
 	position.y = clamp(position.y, 0, 1080)
@@ -40,6 +46,7 @@ func _on_Train_body_entered(body):
 		path_follow.get_parent().get_node("PathFollow2DEnd").queue_free()
 		on_rail = true
 		main.take_charge()
+		status = 0
 #		emit_signal("rail_entered")
 		
 		if not tween.is_active():
@@ -51,6 +58,7 @@ func _on_Train_body_entered(body):
 		on_rail = true
 #		emit_signal("rail_entered")
 		main.take_charge()
+		status = 1
 		if not tween.is_active():
 			tween.start()
 	
