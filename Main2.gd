@@ -108,6 +108,7 @@ func add_carriage(pos:Vector2):
 
 func take_charge():
 	charged=true
+	print("charge")
 	change_status(Status.ManRotate)
 
 func end_charge():

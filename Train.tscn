@@ -40,7 +40,6 @@ position = Vector2( 1.16162, -12.4255 )
 scale = Vector2( -0.0333517, 0.0280677 )
 frames = SubResource( 2 )
 animation = "stright"
-frame = 2
 playing = true
 
 [node name="Tween" type="Tween" parent="."]

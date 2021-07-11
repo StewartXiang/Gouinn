@@ -16,7 +16,7 @@ var path_follow
 	
 func _process(delta):
 	if on_rail: #在铁轨上走
-		print(path_follow)
+		
 		self.position = path_follow.position
 		self.rotation_degrees = path_follow.rotation_degrees
 		
@@ -31,20 +31,22 @@ func _on_Train_body_entered(body):
 	
 	if body.name == "HeadDetect":
 		path_follow = body.get_parent()
-		print(path_follow)
+		print("path?")
 		tween.interpolate_property(path_follow, "unit_offset", 0, 1, 5)
 		path_follow.get_parent().get_node("PathFollow2DEnd").queue_free()
 		on_rail = true
+		emit_signal("rail_entered")
+		
+		if not tween.is_active():
+			tween.start()
 	elif body.name == "EndDetect":	
 		path_follow = body.get_parent()
 		tween.interpolate_property(path_follow, "unit_offset", 1, 0, 5)
 		path_follow.get_parent().get_node("PathFollow2DHead").queue_free()
 		on_rail = true
+		emit_signal("rail_entered")
+		if not tween.is_active():
+			tween.start()
 	
-	if not tween.is_active():
-		tween.start()
-	
-	emit_signal("hit")
-	emit_signal("rail_entered")
 
 
