@@ -8,7 +8,7 @@
 [ext_resource path="res://ui_widgets/main_menu/guide_button.png" type="Texture" id=6]
 [ext_resource path="res://ui_widgets/main_menu/story_button.png" type="Texture" id=7]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=1]
 resource_name = "GuidePanel"
 tracks/0/type = "value"
 tracks/0/path = NodePath("guide_panel:modulate")
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=2]
 resource_name = "StoryPanel"
 length = 0.3
 tracks/0/type = "value"
@@ -108,8 +108,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/GuidePanel = SubResource( 10 )
-anims/StoryPanel = SubResource( 9 )
+anims/GuidePanel = SubResource( 1 )
+anims/StoryPanel = SubResource( 2 )
 
 [connection signal="pressed" from="NewButton" to="." method="_on_NewButton_pressed"]
 [connection signal="pressed" from="GuideButton" to="." method="_on_GuideButton_pressed"]
