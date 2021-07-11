@@ -66,6 +66,7 @@ func dropout():
 	if head_node == null:
 		emit_signal("gameover")
 	else:
+		head_node.tail_node.queue_free()
 		head_node.tail_node=null
 		head_node=null
 		disconnect("body_entered",get_parent(),"_on_body_entered")
