@@ -68,7 +68,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "clock"
-frame = 7
 playing = true
 centered = false
 __meta__ = {
