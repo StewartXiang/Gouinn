@@ -50,9 +50,6 @@ func _process(delta):
 			on_rail = false
 			$"../Path2D".queue_free()
 
-	
-
-
 
 func _on_Player_body_entered(body):
 	print("被"+body.name+"撞了")

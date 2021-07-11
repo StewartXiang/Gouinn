@@ -43,6 +43,12 @@ func save_best_score():
 		file.close()
 
 
+func _input(event):
+	if event.is_action_pressed("ui_home"):
+		var file = File.new()
+		file.open("user://save_game.dat", File.WRITE)
+		file.store_string(str(0))
+		file.close()
 
 func gameover():
 	game_over()

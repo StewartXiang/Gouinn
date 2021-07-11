@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/train/carrier_4.png" type="Texture" id=4]
 [ext_resource path="res://assets/train/carrier_3.png" type="Texture" id=5]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform float flash_state:hint_range(0, 1);
@@ -17,11 +17,11 @@ void fragment(){
 	COLOR.a = color.a;
 }"
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/flash_state = 0.0
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
@@ -29,9 +29,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 23.7491
-height = 19.4443
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 27.0841
+height = 16.2519
 
 [sub_resource type="Animation" id=5]
 length = 0.3
@@ -52,18 +52,18 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 4 )
-position = Vector2( -20.8145, 8.08975 )
-scale = Vector2( -0.102, 0.102 )
-frames = SubResource( 1 )
+material = SubResource( 2 )
+position = Vector2( -30.1139, 13.6969 )
+scale = Vector2( -0.15, 0.15 )
+frames = SubResource( 3 )
 animation = "idle"
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -7.62939e-06, -0.749161 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
