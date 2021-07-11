@@ -44,10 +44,10 @@ func _ready():
 	main=get_node("../Main")
 	var g=main.gouinner
 	var t=main.train
-	var box=g.position-t.position
+	var box=g.get_global_transform().get_origin()-t.get_global_transform().get_origin() 
 	main_protect_zone=Rect2(
-		min(g.position.x,t.position.x),
-		min(g.position.y,t.position.y),
+		min(g.get_global_transform().get_origin().x,t.get_global_transform().get_origin().x),
+		min(g.get_global_transform().get_origin().y,t.get_global_transform().get_origin().y),
 		abs(box.x),
 		abs(box.y)
 	)

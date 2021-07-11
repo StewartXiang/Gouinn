@@ -18,7 +18,7 @@ func _ready():
 	$VisibilityNotifier2D.connect("screen_exited", self, "_on_VisibilityNotifier2D_screen_exited")
 	collision_mask = 0b0
 	gravity_scale = 0
-	$Coll
+	connect("body_entered", self, "_on_hit")
 	pass
 
 func _physics_process(delta):
@@ -30,6 +30,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_hit(body):
 	hide()
+	print("hit")
 	$CollisionShape2D.set_deferred("disabled", true)
 	queue_free()
 

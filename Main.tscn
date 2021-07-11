@@ -14,5 +14,4 @@ position = Vector2( 211.888, 347.051 )
 position = Vector2( 123.472, 217.966 )
 
 [connection signal="body_entered" from="Train" to="." method="_on_body_entered"]
-[connection signal="gameover" from="Train" to="." method="_on_Train_gameover"]
 [connection signal="body_entered" from="Gouinner" to="." method="_on_body_entered"]

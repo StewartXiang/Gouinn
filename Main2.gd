@@ -12,6 +12,7 @@ var src=Vector2.ZERO
 var tar=Vector2.ONE
 var man_range=Vector2(-45,45)
 var clockwise=-1
+var wudi = false
 
 var charged=false
 # Declare member variables here. Examples:
@@ -33,6 +34,7 @@ func _ready():
 	src = train.position
 	var rvec=train.position-gouinner.position
 	clockwise=sign(rvec.dot(-train.transform.y) )
+	begin_wudi(4)
 
 func _physics_process(delta):
 	get_input()
@@ -111,13 +113,19 @@ func damage():
 		var last=Carriage.get_last(train)
 		last.dropout()
 	else:
-		print("炸了炸了")
+		emit_signal("gameover")
 
 func _on_body_entered(body):
+	if wudi:
+		return
 	if body is BaseEnemy:
 		damage()
-
 
 func _on_Train_gameover():
 	emit_signal("gameover")
 	pass # Replace with function body.
+
+func begin_wudi(t: float):
+	wudi = true
+	yield(get_tree().create_timer(t), "timeout")
+	wudi = false
