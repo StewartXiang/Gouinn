@@ -16,6 +16,8 @@ radius = 27.7647
 height = 12.7845
 
 [node name="CycloidEnermy" type="RigidBody2D"]
+contacts_reported = 2
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

@@ -16,8 +16,11 @@ func _enter_tree():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$VisibilityNotifier2D.connect("screen_exited", self, "_on_VisibilityNotifier2D_screen_exited")
-	collision_mask = 0b0
+	collision_mask = 0b00000000000000000100
+	collision_layer = 0b00000000000000000101
 	gravity_scale = 0
+	contact_monitor = true
+	contacts_reported = 5
 	connect("body_entered", self, "_on_hit")
 	pass
 
@@ -29,8 +32,10 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 func _on_hit(body):
+	pass
+
+func _destroy():
 	hide()
-	print("hit")
 	$CollisionShape2D.set_deferred("disabled", true)
 	queue_free()
 

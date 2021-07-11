@@ -16,6 +16,8 @@ animations = [ {
 radius = 18.7092
 
 [node name="BaseEnemy" type="RigidBody2D"]
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -23,6 +25,7 @@ position = Vector2( -1.11043, -2.44581 )
 scale = Vector2( 0.0903627, 0.0903627 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
