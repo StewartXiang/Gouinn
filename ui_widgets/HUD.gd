@@ -3,7 +3,8 @@ extends CanvasLayer
 var game_over = false
 
 func update_score(score):
-	$ScoreLabel.text = "已坚持秒数：" + str(score)
+#	$ScoreLabel.text = "您已坚持 %s 秒" %str(score)
+	$ScoreLabel.text = "　　　　 %s 　" %str(score)
 
 func show_game_over(score):
 	game_over = true

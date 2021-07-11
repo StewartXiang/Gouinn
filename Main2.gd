@@ -30,7 +30,7 @@ func get_input():
 #	elif not charged:
 #		status = Status.ManRotate
 	if Input.is_action_just_pressed("ui_up"):
-		add_carriage()
+		add_carriage(Vector2.ZERO)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -99,9 +99,10 @@ func change_status(s):
 func deg2vec(deg:float) -> Vector2:
 	return Vector2.RIGHT.rotated(deg2rad(deg))
 
-func add_carriage():
+func add_carriage(pos:Vector2):
 	var one=carriage.instance()
 	add_child(one)
+	one.position=pos
 	one.setup( Carriage.get_last(train) )
 	return one
 
@@ -113,6 +114,8 @@ func end_charge():
 	charged=false
 
 func damage():
+	if wudi:
+		return
 	if train.tail_node:
 		var last=Carriage.get_last(train)
 		last.dropout()
@@ -120,8 +123,9 @@ func damage():
 		emit_signal("gameover")
 
 func _on_body_entered(body):
-	if wudi:
-		return
+#	print(self.name)
+	if body is BaseItem:
+		(body as BaseItem)._on_pickup(self)
 	if body is BaseEnemy:
 		damage()
 		body._destroy()

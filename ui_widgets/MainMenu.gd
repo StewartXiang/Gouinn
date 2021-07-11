@@ -25,3 +25,13 @@ func on_pressed(name):
 
 func _on_ClosedButton_pressed():
 	$AnimationPlayer.play_backwards("Panel")
+
+
+func _on_FullScreenButton_pressed():
+	OS.set_window_fullscreen(true)
+
+
+func _on_Windows720Button_pressed():
+	OS.set_window_fullscreen(false)
+	OS.set_window_size(Vector2(1280, 720))
+	OS.center_window()

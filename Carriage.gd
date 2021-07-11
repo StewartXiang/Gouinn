@@ -61,11 +61,15 @@ func setup(h:Carriage):
 	head_node=h
 	h.tail_node=self
 	connect("body_entered",get_parent(),"_on_body_entered")
+	connect("body_entered",self,"_on_body_entered")
 
 func dropout():
 	if head_node == null:
 		emit_signal("gameover")
 	else:
+		head_node.tail_node.get_node("AnimationPlayer").play("blink")
+		yield(get_tree().create_timer(0.3),"timeout")
+		head_node.tail_node.queue_free()
 		head_node.tail_node=null
 		head_node=null
 		disconnect("body_entered",get_parent(),"_on_body_entered")
@@ -97,4 +101,6 @@ static func get_last(c:Carriage)-> Carriage:
 	while last.tail_node:
 		last=last.tail_node
 	return last
-		
+
+func _on_body_entered(body):
+	print("...")
