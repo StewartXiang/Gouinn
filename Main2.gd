@@ -97,8 +97,8 @@ func deg2vec(deg:float) -> Vector2:
 
 func add_carriage(pos:Vector2):
 	var one=carriage.instance()
-	one.position=pos
 	add_child(one)
+	one.position=pos
 	one.setup( Carriage.get_last(train) )
 	return one
 
@@ -119,7 +119,7 @@ func damage():
 		emit_signal("gameover")
 
 func _on_body_entered(body):
-	print(self)
+#	print(self.name)
 	if body is BaseItem:
 		(body as BaseItem)._on_pickup(self)
 	if body is BaseEnemy:

@@ -1,11 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ui_widgets/HUD.gd" type="Script" id=1]
 [ext_resource path="res://dialogue/方正黑体简体.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://ui_widgets/clock.png" type="Texture" id=3]
+[ext_resource path="res://ui_widgets/clock7.png" type="Texture" id=4]
+[ext_resource path="res://ui_widgets/clock2.png" type="Texture" id=5]
+[ext_resource path="res://ui_widgets/clock4.png" type="Texture" id=6]
+[ext_resource path="res://ui_widgets/clock5.png" type="Texture" id=7]
+[ext_resource path="res://ui_widgets/clock3.png" type="Texture" id=8]
+[ext_resource path="res://ui_widgets/clock6.png" type="Texture" id=9]
+[ext_resource path="res://ui_widgets/clock1.png" type="Texture" id=10]
+[ext_resource path="res://ui_widgets/sec.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "clock",
+"speed": 1.0
+} ]
 
 [sub_resource type="DynamicFont" id=2]
 size = 88
@@ -20,15 +37,38 @@ script = ExtResource( 1 )
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = -242.0
-margin_right = 242.0
-margin_bottom = 73.0
+anchor_bottom = 0.5
+margin_left = -211.0
+margin_top = -409.0
+margin_right = 272.999
+margin_bottom = -336.0
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 1 )
-text = "已坚持秒数：0"
+text = "　　　　 X 　"
 align = 1
 valign = 1
 __meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "clock"
+frame = 3
+playing = true
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

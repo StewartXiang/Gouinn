@@ -61,6 +61,7 @@ func setup(h:Carriage):
 	head_node=h
 	h.tail_node=self
 	connect("body_entered",get_parent(),"_on_body_entered")
+	connect("body_entered",self,"_on_body_entered")
 
 func dropout():
 	if head_node == null:
@@ -97,4 +98,6 @@ static func get_last(c:Carriage)-> Carriage:
 	while last.tail_node:
 		last=last.tail_node
 	return last
-		
+
+func _on_body_entered(body):
+	print("...")

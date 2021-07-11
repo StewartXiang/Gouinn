@@ -21,6 +21,7 @@ func _on_pickup(owner:Node2D):
 	if not train:
 		train=owner.get_node("Train")
 	if train is Carriage:
-		var one=owner.add_carriage(position)
-		one.rotation=rotation
+		owner.call_deferred("add_carriage", position)
+#		var one=owner.add_carriage(position)
+#		one.rotation=rotation
 	._on_pickup(owner)
