@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://ui_widgets/HUD.gd" type="Script" id=1]
 [ext_resource path="res://dialogue/方正黑体简体.TTF" type="DynamicFontData" id=2]
@@ -11,12 +11,24 @@
 [ext_resource path="res://ui_widgets/clock6.png" type="Texture" id=9]
 [ext_resource path="res://ui_widgets/clock1.png" type="Texture" id=10]
 [ext_resource path="res://ui_widgets/sec.png" type="Texture" id=11]
+[ext_resource path="res://ui_widgets/bg.png" type="Texture" id=12]
+[ext_resource path="res://ui_widgets/score.png" type="Texture" id=13]
+[ext_resource path="res://ui_widgets/score_people.png" type="Texture" id=14]
+[ext_resource path="res://ui_widgets/score_people1.png" type="Texture" id=15]
+[ext_resource path="res://ui_widgets/score_mob2.png" type="Texture" id=16]
+[ext_resource path="res://ui_widgets/score_mob.png" type="Texture" id=17]
+[ext_resource path="res://ui_widgets/play again.png" type="Texture" id=18]
+[ext_resource path="res://ui_widgets/quit.png" type="Texture" id=19]
+[ext_resource path="res://ui_widgets/score_firework1.png" type="Texture" id=20]
+[ext_resource path="res://ui_widgets/score_firework.png" type="Texture" id=21]
+[ext_resource path="res://ui_widgets/720.png" type="Texture" id=22]
+[ext_resource path="res://ui_widgets/full.png" type="Texture" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 2 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 3 ) ],
 "loop": true,
@@ -24,11 +36,11 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[sub_resource type="DynamicFont" id=2]
-size = 88
+[sub_resource type="DynamicFont" id=3]
+size = 72
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 50
 font_data = ExtResource( 2 )
 
@@ -54,9 +66,9 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 animation = "clock"
-frame = 3
+frame = 7
 playing = true
 centered = false
 __meta__ = {
@@ -76,11 +88,41 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -941.11, -299.155 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="OverPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Mask" type="ColorRect" parent="OverPanel"]
+modulate = Color( 1, 1, 1, 0.701961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.2, 0.196078, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreBG" type="TextureRect" parent="OverPanel"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="OverPanel"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -89,24 +131,32 @@ margin_left = -176.0
 margin_top = -208.58
 margin_right = 176.0
 margin_bottom = -108.58
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "您的得分"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScoreLabel" type="Label" parent="OverPanel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -176.0
-margin_top = -50.0
-margin_right = 176.0
-margin_bottom = 50.0
-rect_pivot_offset = Vector2( -1424.88, -394.069 )
-custom_fonts/font = SubResource( 2 )
-text = "0"
+margin_left = 920.0
+margin_top = 630.0
+margin_right = 1000.0
+margin_bottom = 712.0
+custom_fonts/font = SubResource( 3 )
+text = "23"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoreLabel" type="Label" parent="OverPanel"]
+margin_left = 1606.0
+margin_top = 179.0
+margin_right = 1686.0
+margin_bottom = 261.0
+custom_fonts/font = SubResource( 3 )
+text = "23"
 align = 1
 valign = 1
 __meta__ = {
@@ -114,16 +164,129 @@ __meta__ = {
 }
 
 [node name="ClosedButton" type="Button" parent="OverPanel"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -53.0229
 margin_right = -8.02295
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "X"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="People" type="TextureRect" parent="OverPanel"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mob" type="TextureRect" parent="OverPanel"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Firework" type="TextureRect" parent="OverPanel"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PeopleUpTo15" type="TextureRect" parent="OverPanel"]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MobUpTo15" type="TextureRect" parent="OverPanel"]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireworkUpTo15" type="TextureRect" parent="OverPanel"]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToFull" type="TextureButton" parent="OverPanel"]
+margin_left = 76.0
+margin_top = 68.0
+margin_right = 400.0
+margin_bottom = 134.0
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 23 )
+texture_disabled = ExtResource( 23 )
+texture_focused = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="To720" type="TextureButton" parent="OverPanel"]
+margin_left = 76.0
+margin_top = 154.0
+margin_right = 400.0
+margin_bottom = 220.0
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 22 )
+texture_disabled = ExtResource( 22 )
+texture_focused = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayAgain" type="TextureButton" parent="OverPanel"]
+margin_left = 990.0
+margin_top = 767.0
+margin_right = 1287.0
+margin_bottom = 852.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 18 )
+texture_focused = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGame" type="TextureButton" parent="OverPanel"]
+margin_left = 631.0
+margin_top = 767.0
+margin_right = 928.0
+margin_bottom = 852.0
+rect_pivot_offset = Vector2( 487.156, -874.811 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 19 )
+texture_disabled = ExtResource( 19 )
+texture_focused = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="OverPanel/ClosedButton" to="." method="_on_ClosedButton_pressed"]
+[connection signal="pressed" from="OverPanel/ToFull" to="." method="to_full_screen"]
+[connection signal="pressed" from="OverPanel/To720" to="." method="to720"]
+[connection signal="pressed" from="OverPanel/PlayAgain" to="." method="play_again"]
+[connection signal="pressed" from="OverPanel/QuitGame" to="." method="quit_game"]

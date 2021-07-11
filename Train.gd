@@ -1,32 +1,52 @@
-extends Area2D
+extends Carriage
 
-const speed = 200
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var direction = Vector2(1, 0)
+signal hit
+signal rail_entered
+signal rail_exited
+
+onready var tween = $Tween
+onready var collision = $CollisionShape2D
+
+var target = Vector2()
+var on_rail = false
 
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
+var path_follow
 	
-	pass # Replace with function body.
+	
+func _process(delta):
+	if on_rail: #在铁轨上走
+		
+		self.position = path_follow.position
+		self.rotation_degrees = path_follow.rotation_degrees
+		
+		if path_follow.unit_offset >= 1:
+			on_rail = false
+			emit_signal("rail_exited")
+			path_follow.get_parent().queue_free()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	position += direction.normalized() * speed * delta
-	pass
-#	pass
+func _on_Train_body_entered(body):
+	print("被"+body.name+"撞了")
+	
+	if body.name == "HeadDetect":
+		path_follow = body.get_parent()
+		print("path?")
+		tween.interpolate_property(path_follow, "unit_offset", 0, 1, 5)
+		path_follow.get_parent().get_node("PathFollow2DEnd").queue_free()
+		on_rail = true
+		emit_signal("rail_entered")
+		
+		if not tween.is_active():
+			tween.start()
+	elif body.name == "EndDetect":	
+		path_follow = body.get_parent()
+		tween.interpolate_property(path_follow, "unit_offset", 1, 0, 5)
+		path_follow.get_parent().get_node("PathFollow2DHead").queue_free()
+		on_rail = true
+		emit_signal("rail_entered")
+		if not tween.is_active():
+			tween.start()
+	
 
-func calculate_direction(p: Vector2, delta):
-	var delta_d = (position - p).normalized()
-	var _cos = direction.normalized().dot(delta_d)
-	print(_cos)
-	direction += (delta_d *  (-_cos))
-	direction = direction.normalized()
-	#print(direction)
-#	print(asin(_sin))
-	look_at(position + direction)
-#	print(direction)
+

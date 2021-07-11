@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Carriage.gd" type="Script" id=1]
+[ext_resource path="res://Train.gd" type="Script" id=1]
 [ext_resource path="res://assets/train/train_circle_1.png" type="Texture" id=2]
 [ext_resource path="res://assets/train/train_circle_3.png" type="Texture" id=3]
 [ext_resource path="res://assets/train/train_circle_2.png" type="Texture" id=4]
@@ -40,5 +40,8 @@ position = Vector2( 1.16162, -12.4255 )
 scale = Vector2( -0.0333517, 0.0280677 )
 frames = SubResource( 2 )
 animation = "stright"
-frame = 2
 playing = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_Train_body_entered"]

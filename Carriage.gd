@@ -67,12 +67,12 @@ func dropout():
 	if head_node == null:
 		emit_signal("gameover")
 	else:
-		head_node.tail_node.get_node("AnimationPlayer").play("blink")
+		$AnimationPlayer.play("blink")
 		yield(get_tree().create_timer(0.3),"timeout")
-		head_node.tail_node.queue_free()
 		head_node.tail_node=null
 		head_node=null
 		disconnect("body_entered",get_parent(),"_on_body_entered")
+		queue_free()
 
 func get_head_pos()-> Vector2:
 	return shape.global_position+body_vec.rotated(rotation)
