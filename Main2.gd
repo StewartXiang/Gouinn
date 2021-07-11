@@ -117,9 +117,11 @@ func take_charge():
 	charged=true
 	print("charge")
 	change_status(Status.ManRotate)
+	wudi = true
 
 func end_charge():
 	charged=false
+	wudi = false
 
 func damage():
 	if wudi:
