@@ -11,8 +11,8 @@
 [ext_resource path="res://assets/train/train_stright_4.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 18.1001
-height = 30.6728
+radius = 28.7229
+height = 23.1777
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -38,9 +38,10 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -29.5942, -13.2192 )
-scale = Vector2( -0.0333517, 0.0280677 )
+scale = Vector2( -0.04, 0.04 )
 frames = SubResource( 2 )
 animation = "stright"
+frame = 2
 playing = true
 
 [node name="Tween" type="Tween" parent="."]

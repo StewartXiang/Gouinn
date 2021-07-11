@@ -136,7 +136,7 @@ func _on_body_entered(body):
 	if body is BaseItem:
 		(body as BaseItem)._on_pickup(self)
 		var _a = CARRIAGE.instance()
-		add_child(_a)
+		call_deferred("add_child",_a)
 		_a.position = Vector2(
 			randi()%1800+60, 
 			randi()%960+60
