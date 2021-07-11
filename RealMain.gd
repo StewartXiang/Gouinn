@@ -14,8 +14,6 @@ func new_game():
 	$HUD.update_score(score)
 	$ScoreTimer.start()
 	$BGM.play()
-	
-
 
 
 

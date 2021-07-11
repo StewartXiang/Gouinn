@@ -25,6 +25,9 @@ func _process(delta):
 			main.end_charge()
 #			emit_signal("rail_exited")
 			path_follow.get_parent().queue_free()
+			
+	position.x = clamp(position.x, 0, 1920)
+	position.y = clamp(position.y, 0, 1080)
 
 
 func _on_Train_body_entered(body):
